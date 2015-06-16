@@ -1,0 +1,54 @@
+$(document).ready(function(){
+
+	$('#registerForm').submit( function()
+	{
+
+		var valid = true;
+		if( $('#name').attr('value') == '')
+		{	$('#name').addClass('formErrorEd');
+			$('#errorName').html('Podaj imie');
+		   valid = false;
+		}else
+		{	$('#name').removeClass('formErrorEd');
+			$('#errorName').html('');
+		}
+		
+		if( $('#surname').attr('value') == '')
+		{	$('#surname').addClass('formErrorEd');
+			$('#errorSurname').html('Podaj nazwisko');
+		   valid = false;
+		}else
+		{	$('#surname').removeClass('formErrorEd');
+			$('#errorSurname').html('');
+		}
+		if( $('#pass').attr('value') == '')
+		{	$('#pass').addClass('formErrorEd');
+			$('#errorPasswd').html('Podaj haslo');
+		   valid = false;
+		}else
+		{	
+				$('#pass').removeClass('formErrorEd');
+				$('#confpasswdEd').removeClass('formErrorEd');
+				$('#errorPasswd').html('');
+		}	
+		if( $('#mail').attr('value') == '')
+		{	$('#email').addClass('formErrorEd');
+			$('#errorEmail').html('Podaj e-mail');
+		   valid = false;
+		}else
+		{	
+			
+				$('#email').removeClass('formErrorEd');
+				$('#errorEmail').html('');
+			
+		}
+	if(!valid)
+	{
+		alert('Popraw bledy.');
+  		return false;
+	}
+	});
+	
+	
+}); 
+
