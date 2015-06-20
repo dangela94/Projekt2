@@ -12,7 +12,7 @@ class view
 		<script type='text/javascript' src='scripts/jQuery.js'></script>
 		<script type='text/javascript' src='./scripts/registration.js'></script> 
 						
-		<form id='registerForm' method='post' action='../projekt2/index.php?strona=zarejestruj'>
+		<form id='registerForm' method='post' action='index.php?strona=zarejestruj'>
 			<label class='formLbl' for='mail'>e-mail</label> <br />
 			<input class='formEd' type='text' id='mail' name='mail' value='' />	<br />
 			<label class='formLbl' for='name'>Imie</label> <br />
