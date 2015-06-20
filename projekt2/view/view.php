@@ -59,7 +59,7 @@ class view
 		session_start();
 		
 		echo "
-		<form action='../projekt2/index.php?strona=loguj' method='post'>
+		<form action='index.php?strona=loguj' method='post'>
 			<label for='Login'>Login:</label><br />
 			<input type='text' id='login' name='login' /><br />
 			<label for='Haslo'>Haslo</label><br />
@@ -105,7 +105,7 @@ class view
 	public function szukaj()
 	{
 		echo "
-		<form action='../projekt2/index.php?strona=rezerwacja' method='post'>
+		<form action='index.php?strona=rezerwacja' method='post'>
 			<label for='nazwa'>Tytul ksiazki:</label><br />
 			<input type='text' id='nazwa' name='nazwa' /><br />
 			<input type='submit' id='LogInBtn' value='Szukaj' /><br />
@@ -116,7 +116,7 @@ class view
 	public function szukaj_rez()
 	{
 		echo "
-		<form action='../projekt2/index.php?strona=odrezerwacja' method='post'>
+		<form action='index.php?strona=odrezerwacja' method='post'>
 			<label for='nazwa'>Tytul ksiazki:</label><br />
 			<input type='text' id='nazwa' name='nazwa' /><br />
 			<input type='submit' id='LogInBtn' value='Odrezewuj' /><br />
@@ -263,7 +263,7 @@ class view
 	public function szukaj_usera()
 	{
 		echo "
-		<form action='../projekt2/index.php?strona=usuwanie_usera' method='post'>
+		<form action='index.php?strona=usuwanie_usera' method='post'>
 			<label for='nazwa'>Login: </label><br />
 			<input type='text' id='login' name='login' /><br />
 			<input type='submit' id='LogInBtn' value='Usun' /><br />
@@ -285,7 +285,7 @@ class view
 	{
 		echo
 		"				
-		<form id='registerForm' method='post' action='../projekt2/index.php?strona=dodaj_ksiege'>
+		<form id='registerForm' method='post' action='index.php?strona=dodaj_ksiege'>
 			<label class='formLbl' for='imie'>Imie</label> <br />
 			<input class='formEd' type='text' id='imie' name='imie' value='' />	<br />
 			<label class='formLbl' for='nazwisko'>Nazwisko</label> <br />
