@@ -108,8 +108,20 @@ class model
 	}
 
     public function rezerwacja_ksiazki($bookId){
+
         $dbb = new PDO('sqlite:sql/baza.db');
-        $us = $dbb->query("SELECT * FROM library WHERE nazwa like '%".$_POST["nazwa"]."%';");
+
+        $res = $dbb->query("SELECT * FROM library WHERE id=".$bookId);
+        $book = $res->fetch();
+
+        if(isset($book['id'])){
+            $dbb -> query("UPDATE library SET login='".$_SESSION['login']."' WHERE id = '".$book['id']."';");
+            $res = $dbb -> query("UPDATE library SET stan = 1 WHERE id = '".$book['id']."';");
+            return $res->rowCount();
+        }else{
+            return false;
+        }
+
     }
 
 	public function odrezerwacja()

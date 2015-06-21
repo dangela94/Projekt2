@@ -146,7 +146,7 @@ class view
             }
             echo '</table>';
         }
-		echo "<br />Ksiazka zostala zarezerwowana";
+
 	}
 	
 	public function nie_znaleziono_ksiazki()

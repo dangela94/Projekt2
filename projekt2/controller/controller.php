@@ -56,7 +56,10 @@ class controller
                 $_view->szukaj();
                 $bookId = $_GET['bookId'];
                 if(!empty($bookId)){
-
+                    $res = $_model->rezerwacja_ksiazki($bookId);
+                    if($res){
+                        echo "<br />Ksiazka zostala zarezerwowana";
+                    }
                 }else{
                     $books = $_model->rezerwacja();
                     if(count($books))
