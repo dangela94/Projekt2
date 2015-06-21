@@ -150,10 +150,25 @@ class view
                 if($book['stan'] == 1){
                     echo '<td>zarezerwowana</td>';
                 }else{
-                    echo '<td><a href="index.php?strona=rezerwacja&bookId='.$book['id'].'">rezerwuj</a></td>';
+                    echo '<td><a href="index.php?strona=rezerwacja&bookId='.$book['id'].'" data-book-id="'.$book['id'].'">rezerwuj</a></td>';
                 }
                 echo '</tr>';
             }
+            echo '<script>';
+                echo 'jQuery(".books-found a[data-book-id]").click(function(){'."\n";
+                    echo 'var self = this;'."\n";
+                    echo 'ping(function(status){'."\n";
+                        echo 'if(status == false){'."\n";
+                            echo 'jQuery(self).html("w trakcie");'."\n";
+                            echo 'addToQueue("ajax.php?strona=rezerwacja&bookId="+jQuery(self).attr("data-book-id"));'."\n";
+                        echo '}else{'."\n";
+                            echo 'document.location.href=jQuery(self).attr("href");'."\n";
+                        echo '}'."\n";
+
+                    echo '});'."\n";
+                    echo 'return false;'."\n";
+                echo '});';
+            echo '</script>';
             echo '</table>';
         }
 

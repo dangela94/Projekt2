@@ -23,17 +23,49 @@ exit();
         <script src="jquery-2.1.4.min.js"></script>
         <script>
             var queue = [];
-            function ping(){
+            function ping(cb){
                 jQuery.ajax({
                     url : 'ping.php'
                 }).done(function(data){
                     jQuery('#application-status').html('Online');
                     jQuery('#application-status').addClass('online');
+                    if(typeof cb == 'function'){
+                        cb(true);
+                    }
+                    runQueue();
                 }).fail(function(err){
                     jQuery('#application-status').removeClass('online');
                     jQuery('#application-status').html('Offline');
+                    if(typeof cb == 'function'){
+                        cb(false);
+                    }
+
                 })
 
+            }
+
+            function addToQueue(url){
+                queue.push(url);
+            }
+
+            function runQueue(){
+                var call;
+                var length = queue.length;
+
+                var reservationCalled = function(){
+                    length--;
+                    if(length==0){
+                        location.reload();
+                    }
+                }
+
+                while( (call = queue.shift())  ){
+                    jQuery.get(
+                        call
+                    ).done(function(){
+                            reservationCalled();
+                    });
+                }
             }
 
             jQuery(document).ready(function(){

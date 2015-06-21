@@ -78,14 +78,20 @@ class controller
 				$_view->szukaj_rez();
 				break;
 			case 'odrezerwacja':
+
 				if($_model->odrezerwacja($_GET['bookId']) == 1)
 				{
+                    $data = $_model->rezerwacje();
+                    $_view->rezerwacje($data);
 					$_view->odrezerwowano_ksiazke();
 				}
 				else
 				{
+                    $data = $_model->rezerwacje();
+                    $_view->rezerwacje($data);
 					$_view->nie_odrezerwowano_ksiazki();
 				}
+
 				break;	
 			case 'uzytkownicy':
 				$data = $_model->uzytkownicy();	
