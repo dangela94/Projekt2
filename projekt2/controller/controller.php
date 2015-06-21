@@ -52,14 +52,24 @@ class controller
 				$_view->szukaj();
 				break;
 			case 'rezerwacja':
-				if($_model->rezerwacja() == 1)
-				{
-					$_view->znaleziono_ksiazke();
-				}
-				else
-				{
-					$_view->nie_znaleziono_ksiazki();
-				}
+
+                $_view->szukaj();
+                $bookId = $_GET['bookId'];
+                if(!empty($bookId)){
+
+                }else{
+                    $books = $_model->rezerwacja();
+                    if(count($books))
+                    {
+                        $_view->znaleziono_ksiazke($books);
+                    }
+                    else
+                    {
+                        $_view->nie_znaleziono_ksiazki();
+                    }
+                }
+
+
 				break;
 			case 'odrezerwuj':
 				$_view->szukaj_rez();

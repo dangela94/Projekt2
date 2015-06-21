@@ -124,8 +124,28 @@ class view
 		";	
 	}
 	
-	public function znaleziono_ksiazke()
+	public function znaleziono_ksiazke($books)
 	{
+        if(!empty($books)){
+            echo '<table class="books-found">';
+            echo '<tr>';
+                echo '<th>Imie</th>';
+                echo '<th>Nazwisko</th>';
+                echo '<th>Tytul</th>';
+                echo '<th>Stan</th>';
+            echo '</tr>';
+            foreach($books as $book){
+                echo '<tr>';
+                echo '<td>'.$book['imie'].'</td><td>'.$book['nazwisko'].'</td><td>'.$book['nazwa'].'</td>';
+                if($book['stan'] == 1){
+                    echo '<td>zarezerwowana</td>';
+                }else{
+                    echo '<td><a href="index.php?strona=rezerwacja&bookId='.$book['id'].'">rezerwuj</a></td>';
+                }
+                echo '</tr>';
+            }
+            echo '</table>';
+        }
 		echo "<br />Ksiazka zostala zarezerwowana";
 	}
 	

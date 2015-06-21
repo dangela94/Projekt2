@@ -83,12 +83,13 @@ class model
 		session_start();
 		$dbb = new PDO('sqlite:sql/baza.db');
 		
-		$us = $dbb->query("SELECT * FROM library WHERE nazwa = '".$_POST["nazwa"]."';");
-		$count = $us->fetchColumn();
+		$us = $dbb->query("SELECT * FROM library WHERE nazwa like '%".$_POST["nazwa"]."%';");
+		$books = $us->fetchAll();
+        $count = count($books);
 		if($count)
 		{
-			$us = NULL;
-			$us = $dbb->query("SELECT * FROM library WHERE nazwa = '".$_POST["nazwa"]."';");
+			return $books;
+            /*
 			$data = $us->fetchAll();
 			if($data[0]['stan'] == 0)
 			{
@@ -97,7 +98,7 @@ class model
 				return 1;
 			}
 			else
-				return 0;
+				return 0;*/
 		}
 		else
 		{
@@ -105,6 +106,11 @@ class model
 			return 0;
 		}
 	}
+
+    public function rezerwacja_ksiazki($bookId){
+        $dbb = new PDO('sqlite:sql/baza.db');
+        $us = $dbb->query("SELECT * FROM library WHERE nazwa like '%".$_POST["nazwa"]."%';");
+    }
 
 	public function odrezerwacja()
 	{
