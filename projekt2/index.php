@@ -23,6 +23,7 @@ exit();
         <script src="jquery-2.1.4.min.js"></script>
         <script>
             var queue = [];
+            var count = 0;
             function ping(cb){
                 jQuery.ajax({
                     url : 'ping.php'
@@ -45,26 +46,28 @@ exit();
             }
 
             function addToQueue(url){
-                queue.push(url);
+                localStorage.setItem('res'+count,url);
+                count++;
             }
 
             function runQueue(){
                 var call;
-                var length = queue.length;
 
                 var reservationCalled = function(){
-                    length--;
-                    if(length==0){
+                    count--;
+                    if(count==0){
                         location.reload();
                     }
                 }
-
-                while( (call = queue.shift())  ){
+                for(var i in localStorage){
+                    var call = localStorage.getItem(i);
                     jQuery.get(
                         call
                     ).done(function(){
                             reservationCalled();
                     });
+                    localStorage.removeItem(i);
+
                 }
             }
 
