@@ -20,9 +20,35 @@ exit();
 		<meta charset="ISO-8859-2">
 		<title>Book store</title>
 		<?php $_contr->skorka() ?>
+        <script src="jquery-2.1.4.min.js"></script>
+        <script>
+            var queue = [];
+            function ping(){
+                jQuery.ajax({
+                    url : 'ping.php'
+                }).done(function(data){
+                    jQuery('#application-status').html('Online');
+                    jQuery('#application-status').addClass('online');
+                }).fail(function(err){
+                    jQuery('#application-status').removeClass('online');
+                    jQuery('#application-status').html('Offline');
+                })
+
+            }
+
+            jQuery(document).ready(function(){
+
+                window.setInterval(ping,5000);
+
+            });
+
+        </script>
 	</head>
 	<body>
 		<header id="header">
+            <div id="application-status" class="application-status online">
+                Online
+            </div>
 			<a href="index.php">Book store</a>
 		</header>
 		<nav id="menu">

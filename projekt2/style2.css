@@ -132,3 +132,15 @@ body{
 .books-reserved a{
     text-decoration: underline;
 }
+.application-status {
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    font-size: 41px;
+    background-color: red;
+    line-height: 39px;
+    padding: 0px 21px;
+}
+.application-status.online{
+    background-color:green;
+}
