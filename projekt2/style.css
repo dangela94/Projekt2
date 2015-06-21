@@ -127,10 +127,12 @@ body{
     	display: block;		
 }
 
-
+.books-reserved,
 .books-found{
     margin:0 auto;
 }
-.books-found a{
+.books-found a,
+.books-reserved a{
     text-decoration: underline;
 }
+

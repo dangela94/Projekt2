@@ -90,11 +90,21 @@ class view
 	{
 		if($data)
 		{
-			echo '<br />Id&#9;'.'Imie&#9;'.'Nazwisko&#9;'.'Tytul&#9;'.'Stan'.'<br /><br />';
-			foreach($data as $row)
+            echo '<table class="books-reserved">';
+            echo '<tr>';
+                echo '<th>Imie</th>';
+                echo '<th>Nazwisko</th>';
+                echo '<th>Tytul</th>';
+                echo '<th>Akcja</th>';
+            echo '</tr>';
+            foreach($data as $book)
 			{
-				echo $row['id'].'&#9;'.$row['imie'].'&#9;'.$row['nazwisko'].'&#9;'.'"'.$row['nazwa'].'"'.'&#9;'.$row['stan'].'<br />';
+                echo '<tr>';
+                echo '<td>'.$book['imie'].'</td><td>'.$book['nazwisko'].'</td><td>'.$book['nazwa'].'</td>';
+                echo '<td><a href="index.php?strona=odrezerwacja&bookId='.$book['id'].'">odrezerwuj</a></td>';
+                echo '</tr>';
 			}
+            echo '</table>';
 		}
 		else
 		{
