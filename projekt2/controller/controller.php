@@ -78,7 +78,7 @@ class controller
 				$_view->szukaj_rez();
 				break;
 			case 'odrezerwacja':
-				if($_model->odrezerwacja() == 1)
+				if($_model->odrezerwacja($_GET['bookId']) == 1)
 				{
 					$_view->odrezerwowano_ksiazke();
 				}

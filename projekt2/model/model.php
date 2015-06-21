@@ -124,22 +124,22 @@ class model
 
     }
 
-	public function odrezerwacja()
+	public function odrezerwacja($bookId)
 	{
 		session_start();
 		$dbb = new PDO('sqlite:sql/baza.db');
 		
-		$us = $dbb->query("SELECT * FROM library WHERE nazwa = '".$_POST["nazwa"]."';");
+		$us = $dbb->query("SELECT * FROM library WHERE id = " . $bookId);
 		$count = $us->fetchColumn();
 		if($count)
 		{
 			$us = NULL;
-			$us = $dbb->query("SELECT * FROM library WHERE nazwa = '".$_POST["nazwa"]."';");
+			$us = $dbb->query("SELECT * FROM library WHERE id = " . $bookId);
 			$data = $us->fetchAll();
 			if($data[0]['stan'] == 1)
 			{
-				$dbb -> query("UPDATE library SET login='' WHERE nazwa = '".$_POST["nazwa"]."';");
-				$dbb -> query("UPDATE library SET stan = 0 WHERE nazwa = '".$_POST["nazwa"]."';");
+				$dbb -> query("UPDATE library SET login='' WHERE id = " . $bookId);
+				$dbb -> query("UPDATE library SET stan = 0 WHERE id = " . $bookId);
 				return 1;
 			}
 			else
